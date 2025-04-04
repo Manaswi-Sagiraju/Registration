@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Kid Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        .receipt {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #000;
+            display: none;
+            background-color: #f9f9f9;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>School Registration Form</h2>
+        <form id="registrationForm">
+            <label for="name">Child's Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" required>
+
+            <label for="grade">Grade Applying For:</label>
+            <select id="grade" required>
+                <option value="">Select Grade</option>
+                <option value="1">Grade 1</option>
+                <option value="2">Grade 2</option>
+                <option value="3">Grade 3</option>
+                <option value="4">Grade 4</option>
+                <option value="5">Grade 5</option>
+            </select>
+
+            <label for="parent">Parent/Guardian Name:</label>
+            <input type="text" id="parent" required>
+
+            <label for="contact">Contact Number:</label>
+            <input type="text" id="contact" required>
+
+            <button type="button" onclick="submitForm()">Register</button>
+        </form>
+
+        <div class="receipt" id="receipt">
+            <h3>Registration Receipt</h3>
+            <p><strong>Child's Name:</strong> <span id="r_name"></span></p>
+            <p><strong>Age:</strong> <span id="r_age"></span></p>
+            <p><strong>Grade:</strong> <span id="r_grade"></span></p>
+            <p><strong>Parent/Guardian:</strong> <span id="r_parent"></span></p>
+            <p><strong>Contact:</strong> <span id="r_contact"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function submitForm() {
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let grade = document.getElementById("grade").value;
+            let parent = document.getElementById("parent").value;
+            let contact = document.getElementById("contact").value;
+            
+            if (name && age && grade && parent && contact) {
+                document.getElementById("r_name").innerText = name;
+                document.getElementById("r_age").innerText = age;
+                document.getElementById("r_grade").innerText = grade;
+                document.getElementById("r_parent").innerText = parent;
+                document.getElementById("r_contact").innerText = contact;
+                document.getElementById("receipt").style.display = "block";
+            } else {
+                alert("Please fill out all fields before registering.");
+            }
+        }
+    </script>
+</body>
+</html>
